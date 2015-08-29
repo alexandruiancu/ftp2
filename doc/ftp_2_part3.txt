@@ -1,0 +1,7 @@
+Even more changes
+=================
+
+1 Transparent transport protocols
+---------------------------------
+
+Should be possible to transport FTP packets over different ISO 3 level protocols as long as those protocols provide recover lost packets and packet order. Interesting transports beside TCP would be: Reliable UDP, SCTP. Using SCTP would truly avoid HOLB since transport layer, not like HTTP/2 avoids at application layer.

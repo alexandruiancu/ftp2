@@ -1,0 +1,6 @@
+More changes to FTP/2
+=====================
+
+1. Enable security
+2. Negociate connection parameters
+3. Hole punching

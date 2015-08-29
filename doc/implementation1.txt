@@ -1,0 +1,51 @@
+1. Data structures
+------------------
+1.1 FTP connection/stream state
+1.2 Stream tree - each node represents a stream. Usual stream structure shall have members for: ID, priority, weight, file descriptor
+1.3 Parser state - mainly it's a YY_BUFFER_STATE that will be given to protocol parser
+
+2. Create the server
+--------------------
+2.1 Listener thread(listen server socket)
+2.2 Dispatcher thread(hands new socket to free client thread)
+2.3 Client workers(thread pool) - multiple roles:
+    a) socket operations(read/write) - done separate thread would be nice to have logging code posting from here to log thread
+    b) log thread - notified by socket operations thread
+    c) FTP parser - holds FTP state(user authenticated, data connection state, etc), holds streams priorities, weights, state, creates/removes streams buffers
+
+3. The client
+-------------
+3.1 implement meta commands: put, get
+3.2 interface(htop like showing current file transfers)
+3.3 change priority/weight commands(stream id/file name/path based):
+streamID/file name/file path p+/-/=priority w+/-weight
+e.g.:
+11 p+10 w-8
+test.txt p-4
+~/test2.txt p=0 w+1
+
+4. Create automated test
+------------------------
+4.1 Dynamic priority change
+4.2 Exclusive dependency re-prioritization
+4.3 Weight recomputing based on priority change
+4.4 protocol test: establishment
+
+4. Create GitHub projects
+-------------------------
+
+5. Fix bugs
+-----------
+
+6. Details
+6.1 FTP parser
+6.1.1 Keep parser backwards compatible
+6.1.2 Communication is now done in packets meaning:
+      a) smaller amount of data
+      b) incomplete requests
+It becomes inefficient to recreate the FTP parser for each packet. Switching parser state seems more appropriate.
+Parsing shall be done at a smaller granularity: parser states shall include:
+    a) string(incomplete command name, or password, of file path),
+    b) incomplete IP address
+    c) incomplete number(port number)
+

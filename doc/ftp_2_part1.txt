@@ -1,0 +1,116 @@
+An HTTP/2 like protocol implementation for FTP
+==============================================
+
+1. Multiplexing streams(unlocking new use cases)
+-----------------------------------------------
+1.1 Reuse control connection for data
+1.2 Reuse data connection for multiple files
+1.3 Transfer with priority(change your mind I)
+1.4 Cancel transfer(change your mind II)
+
+Multiplexing implies creating a meta-protocol transferring packets of information over established connection. This new protocol allows transferring multiple bits(parts) of files or other information(not neccesarily file parts) interleaved. But transferring files interleaved will not result in transferring more on the wire(better loading available bandwidth) so probably, FTP would not benefit transferring multiple files at the same time with exception of following cases.
+
+1.1 Reuse control connection for data
+-------------------------------------
+But multiplexing control and data connections will surely shorten the time file transfer starts. 
+
+1.2 Reuse data connection for multiple files
+--------------------------------------------
+Also sending more than one file over the same connection sequentially(without establishing a new transport connection for a new file) would result in faster multiple file transfers. Not strictly unlocked by 
+
+1.3 Transfer with priority(change your mind I)
+----------------------------------------------
+Also, having run-time priorities would be nice so a mechanism to quickly change the file that's transferred would be desirable.
+
+1.4 Cancel transfer(change your mind II)
+----------------------------------------
+Cancel a transferring file is possible if asynchronous commands are permitted by ftp implementation. Also, cancel will drop data connection so in case of transferring multiple files all of them will be canceled.
+
+2. Backward compatibility
+-------------------------
+Can be kept backwards compatible. The split is done after deciding to open or not a new connection for data. So although keeping compatibility is possible there will actually be 2 almost completely different servers. Maybe the only common code between is control connection parser.
+
+3. Fixing old problems
+----------------------
+3.1 TCP connection usage
+3.2 FW problem
+3.3 NAT problem
+3.4 TCP performance
+
+3.1 TCP connection usage
+------------------------
+Here, there are 2 different but related problems with actual implementation.
+ -  FTP requires 2 TCP connections: control and data connections,
+ -  Data connection is not persistent.
+
+3.2 FW problem
+--------------
+While passive FTP mode makes FW(client side) traversal possible, server needs to know what ports are open for incoming data connections(usually FTP server software has a configurable port range for passive data connections).
+
+3.3 NAT problem
+---------------
+What IP address to use in command like PASV/PORT ?!?
+Establishing data connection is done writing IP addresses in protocol messages so NAT is difficult.
+There can be 2 cases depending on how FTP is active or passive:
+Either client knows it's public IP and use active connection or server knows it's public IP and use passive connection.
+
+3.4 TCP performance
+-------------------
+What is no additional data(packet headers) will be sent as long nothing changes: priority, file transferred so no additional overhead will occur.
+
+4. Deal with new problems
+-------------------------
+4.1 Stream states
+4.2 Flow control
+4.3 Priority
+4.4 Stream dependency
+4.5 Stream weight
+
+4.1 Stream states
+-----------------
+WIP
+
+4.2 Flow control
+----------------
+It's a luxury as long as TCP offers a whole connection. It's more useful as a implementation challenge(helps implementer better understand how TCP flow control works).
+
+4.3 Priority
+------------
+Very useful especially over high latency networks when waiting for a small file while a big one is almost finished - would be a waste of bandwidth to cancel the big one while as the same time it would be a waste of time to wait for it to finish as long as smaller file is more important to receive.
+
+4.4 Stream dependency
+---------------------
+Directories structure can give a default dependency for streams transferring child files/directories but it dependency doesn't have to be as file system on disk. Following file system would result in a breadth-first copy - this may be new as usually ftp servers transfer list of files depth-first.
+
+4.5 Stream weight
+-----------------
+While priority tells something about the order files are transferred, weight tells how much of same priority stream will transfer before serving another same priority stream. If, for example, weight equals 1/"number of files in current directory" means that a shorter file will finish before a bigger one but a sub-directory having files with a total size smaller than a big file will wait till big file is completely transferred because of priority.
+
+So, is easy to see that priority and weights mechanisms limit transfer throughput(network load). It's useful to consider those 2 mechanisms as mere suggestions and just load the network as much as possible.
+
+5. FTP frames
+-------------
+a) CONTROL(connection) frame(prabably it's equivalent is HEADERS)
+b) DATA
+c) data stream/connection frames:
+   c1) PRIORITY
+   c2) WEIGHT
+   c3) RST_STREAM(reset stream - close/cancel stream)
+   c4) SETTINGS(max concurent stream #, max frame size, windows size)
+   c5) PING(check if connection is still functional)
+   c6) GOAWAY(signal connection closing)
+   c7) WINDOW_UPDATE
+
+6. Security
+-----------
+Not optimal but just tunnel through ssh for now. 
+
+7. Implementation
+-----------------
+Changing protocol needs for demo both sides: server and client
+
+c++ & stl & boost
+libasio, libboost-filesystem, libboost-graph, libboost-iostreams, libboost-log, libboost-program-options, libboost-regex, libboost-test, libboost-thread,
+
+Testing if auto complete is on. Seems it is. Acnol
+
