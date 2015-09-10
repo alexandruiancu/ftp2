@@ -17,15 +17,22 @@ int userLogIn(FramesList &out)
   FTPControlFrame *pf = new FTPControlFrame();
   pf->m_hdr = { 0 };
   pf->m_pCommandsAndReplies = new char[100];
-  //memset(f.m_pCommandsAndReplies, 100, '\0');
   strcpy(pf->m_pCommandsAndReplies, "USER andu\r\nPASS 1234\r\n");
   out.push_back(pf);
   pf = new FTPControlFrame();
   pf->m_hdr = { 0 };
   pf->m_pCommandsAndReplies = new char[100];
-  //memset(f.m_pCommandsAndReplies, 100, '\0');
   strcpy(pf->m_pCommandsAndReplies, "PASS 1234\r\n");
   out.push_back(pf);
+  // ...
+  for ( FramesList::iterator it = out.begin(); it != out.end(); ++it )
+  {
+    FTPControlFrame *pfcf = *it;
+    if ( nullptr == pfcf )
+	continue;
+    delete [] pfcf->m_pCommandsAndReplies;
+    delete pfcf;
+  }
   return 0;
 }
 
