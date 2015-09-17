@@ -27,7 +27,7 @@ int userLogIn(FramesList &out)
   // ...
   for ( FramesList::iterator it = out.begin(); it != out.end(); ++it )
   {
-    FTPControlFrame *pfcf = *it;
+    FTPControlFrame *pfcf = static_cast<FTPControlFrame *>(*it);
     if ( nullptr == pfcf )
 	continue;
     delete [] pfcf->m_pCommandsAndReplies;

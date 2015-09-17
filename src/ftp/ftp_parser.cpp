@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.0.2.  */
+/* A Bison parser, made by GNU Bison 3.0.4.  */
 
 /* Bison implementation for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "3.0.2"
+#define YYBISON_VERSION "3.0.4"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -188,7 +188,7 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE YYSTYPE;
+
 union YYSTYPE
 {
 #line 14 "ftp_parser.ypp" /* yacc.c:355  */
@@ -200,6 +200,8 @@ union YYSTYPE
 
 #line 202 "ftp_parser.cpp" /* yacc.c:355  */
 };
+
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
@@ -229,7 +231,7 @@ int yyparse (Ftp *pContext);
 
 #define yyscanner glbl_scanner
 
-#line 233 "ftp_parser.cpp" /* yacc.c:358  */
+#line 235 "ftp_parser.cpp" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1531,7 +1533,7 @@ yyreduce:
     {
 			pContext->computeParseLength((yyloc));
 		}
-#line 1535 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1537 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 4:
@@ -1539,7 +1541,7 @@ yyreduce:
     {
 			pContext->user((yyvsp[-1].m_szStr));
 		}
-#line 1543 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1545 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 5:
@@ -1547,7 +1549,7 @@ yyreduce:
     {
 			pContext->password((yyvsp[-1].m_szStr));
 		}
-#line 1551 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1553 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 6:
@@ -1555,7 +1557,7 @@ yyreduce:
     {
 		  pContext->port((yyvsp[-1].m_host));
 		}
-#line 1559 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1561 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 7:
@@ -1563,7 +1565,7 @@ yyreduce:
     {
 		  pContext->pasv();
 		}
-#line 1567 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1569 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 8:
@@ -1571,7 +1573,7 @@ yyreduce:
     {
 		  pContext->mode((yyvsp[-1].m_nInt));
 		}
-#line 1575 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1577 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 9:
@@ -1582,7 +1584,7 @@ yyreduce:
       else
         pContext->type((yyvsp[-1].m_nInt));
 		}
-#line 1586 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1588 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 10:
@@ -1593,7 +1595,7 @@ yyreduce:
       else
         pContext->type((yyvsp[-3].m_nInt), (yyvsp[-1].m_nInt));
 		}
-#line 1597 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1599 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 11:
@@ -1601,7 +1603,7 @@ yyreduce:
     {
 		  pContext->stru((yyvsp[-1].m_nInt));
 		}
-#line 1605 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1607 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 12:
@@ -1609,7 +1611,7 @@ yyreduce:
     {
 		  pContext->rest((yyvsp[-1].m_szStr));
 		}
-#line 1613 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1615 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 13:
@@ -1617,7 +1619,7 @@ yyreduce:
     {
 		  pContext->allo((yyvsp[-1].m_nInt));
 		}
-#line 1621 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1623 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 14:
@@ -1625,7 +1627,7 @@ yyreduce:
     {
 		  pContext->allo((yyvsp[-5].m_nInt), (yyvsp[-1].m_nInt));
 		}
-#line 1629 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1631 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 15:
@@ -1633,7 +1635,7 @@ yyreduce:
     {
 		  pContext->retr((yyvsp[-1].m_szStr));
 		}
-#line 1637 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1639 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 16:
@@ -1641,7 +1643,7 @@ yyreduce:
     {
 			pContext->abor();
 		}
-#line 1645 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1647 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 17:
@@ -1649,7 +1651,7 @@ yyreduce:
     {
 		  pContext->list();
 		}
-#line 1653 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1655 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 18:
@@ -1657,7 +1659,7 @@ yyreduce:
     {
 		  pContext->list((yyvsp[-1].m_szStr));
 		}
-#line 1661 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1663 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 19:
@@ -1665,7 +1667,7 @@ yyreduce:
     {
 		  pContext->nlst();
 		}
-#line 1669 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1671 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 20:
@@ -1673,7 +1675,7 @@ yyreduce:
     {
 		  pContext->nlst((yyvsp[-1].m_szStr));
 		}
-#line 1677 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1679 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 21:
@@ -1681,7 +1683,7 @@ yyreduce:
     {
 			pContext->cwd((yyvsp[-1].m_szStr));
 		}
-#line 1685 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1687 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 22:
@@ -1689,7 +1691,7 @@ yyreduce:
     {
 			pContext->cwd("..");
 		}
-#line 1693 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1695 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 23:
@@ -1697,7 +1699,7 @@ yyreduce:
     {
 			pContext->pwd();
 		}
-#line 1701 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1703 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 24:
@@ -1705,7 +1707,7 @@ yyreduce:
     {
 			pContext->help((yyvsp[-1].m_szStr));
 		}
-#line 1709 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1711 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 25:
@@ -1713,7 +1715,7 @@ yyreduce:
     {
 			pContext->help();
 		}
-#line 1717 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1719 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 26:
@@ -1721,7 +1723,7 @@ yyreduce:
     {
 			pContext->syst();
 		}
-#line 1725 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1727 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 27:
@@ -1729,7 +1731,7 @@ yyreduce:
     {
 			pContext->statCmd();
 		}
-#line 1733 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1735 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 28:
@@ -1737,7 +1739,7 @@ yyreduce:
     {
 			pContext->quit();
 		}
-#line 1741 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1743 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 29:
@@ -1745,7 +1747,7 @@ yyreduce:
     {
 			pContext->noop();
 		}
-#line 1749 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1751 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 30:
@@ -1753,7 +1755,7 @@ yyreduce:
     {
 			pContext->ftpReply(502);//any new commands
 		}
-#line 1757 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1759 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 31:
@@ -1761,7 +1763,7 @@ yyreduce:
     {
 			pContext->ftpReply(502);//any new commands
 		}
-#line 1765 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1767 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 32:
@@ -1769,7 +1771,7 @@ yyreduce:
     {
 			// ignore empty lines
 		}
-#line 1773 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1775 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 33:
@@ -1777,7 +1779,7 @@ yyreduce:
     {
 		  pContext->stor((yyvsp[-1].m_szStr));
 		}
-#line 1781 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1783 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 34:
@@ -1785,7 +1787,7 @@ yyreduce:
     {
 		  pContext->stou((yyvsp[-1].m_szStr));
 		}
-#line 1789 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1791 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 35:
@@ -1793,7 +1795,7 @@ yyreduce:
     {
 		  pContext->dele((yyvsp[-1].m_szStr));
 		}
-#line 1797 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1799 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 36:
@@ -1801,7 +1803,7 @@ yyreduce:
     {
 		  pContext->appe((yyvsp[-1].m_szStr));
 		}
-#line 1805 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1807 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 37:
@@ -1809,7 +1811,7 @@ yyreduce:
     {
 		  pContext->mkd((yyvsp[-1].m_szStr));
 		}
-#line 1813 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1815 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 38:
@@ -1817,7 +1819,7 @@ yyreduce:
     {
 		  pContext->rmd((yyvsp[-1].m_szStr));
 		}
-#line 1821 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1823 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 39:
@@ -1825,7 +1827,7 @@ yyreduce:
     {
 		  pContext->rnfr((yyvsp[-1].m_szStr));
 		}
-#line 1829 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1831 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 40:
@@ -1833,14 +1835,14 @@ yyreduce:
     {
 		  pContext->rnto((yyvsp[-1].m_szStr));
 		}
-#line 1837 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1839 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 41:
 #line 253 "ftp_parser.ypp" /* yacc.c:1646  */
     {
 		}
-#line 1844 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1846 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 42:
@@ -1849,7 +1851,7 @@ yyreduce:
 			//pContext->Chmod($3, $5);
 			pContext->ftpReply(502);
 		}
-#line 1853 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1855 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 43:
@@ -1858,7 +1860,7 @@ yyreduce:
 			//pContext->Utime($3, $5);
 			pContext->ftpReply(502);
 		}
-#line 1862 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1864 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 44:
@@ -1866,7 +1868,7 @@ yyreduce:
     {
 			pContext->size((yyvsp[-1].m_szStr));
 		}
-#line 1870 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1872 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 45:
@@ -1879,7 +1881,7 @@ yyreduce:
 		  (yyval.m_host).p1 = (yyvsp[0].m_host).p1;
 		  (yyval.m_host).p2 = (yyvsp[0].m_host).p2;
 		}
-#line 1883 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1885 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 46:
@@ -1890,7 +1892,7 @@ yyreduce:
 		  (yyval.m_host).h3 = (yyvsp[-2].m_nInt);
 		  (yyval.m_host).h4 = (yyvsp[0].m_nInt);
 		}
-#line 1894 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1896 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 47:
@@ -1899,7 +1901,7 @@ yyreduce:
 		  (yyval.m_host).p1 = (yyvsp[-2].m_nInt);
 		  (yyval.m_host).p2 = (yyvsp[0].m_nInt);
 		}
-#line 1903 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1905 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 48:
@@ -1907,7 +1909,7 @@ yyreduce:
     {
 		  (yyval.m_nInt) = StreamState::MODE_STREAM;
 		}
-#line 1911 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1913 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 49:
@@ -1915,7 +1917,7 @@ yyreduce:
     {
 		  (yyval.m_nInt) = -1;
 		}
-#line 1919 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1921 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 50:
@@ -1923,7 +1925,7 @@ yyreduce:
     {
 		  (yyval.m_nInt) = -1;
 		}
-#line 1927 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1929 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 51:
@@ -1931,7 +1933,7 @@ yyreduce:
     {
 			(yyval.m_nInt) = StreamState::STRU_FILE;
 		}
-#line 1935 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1937 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 52:
@@ -1939,7 +1941,7 @@ yyreduce:
     {
 		  (yyval.m_nInt) = -1;
 		}
-#line 1943 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1945 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 53:
@@ -1947,7 +1949,7 @@ yyreduce:
     {
 		  (yyval.m_nInt) = -1;
 		}
-#line 1951 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1953 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 54:
@@ -1955,7 +1957,7 @@ yyreduce:
     {
 		  (yyval.m_nInt) = StreamState::REPR_ASCII;
 		}
-#line 1959 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1961 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 55:
@@ -1963,7 +1965,7 @@ yyreduce:
     {
 		  (yyval.m_nInt) = StreamState::REPR_IMAGE;
 		}
-#line 1967 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1969 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 56:
@@ -1971,7 +1973,7 @@ yyreduce:
     {
       (yyval.m_nInt) = -1;
 		}
-#line 1975 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1977 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 57:
@@ -1979,7 +1981,7 @@ yyreduce:
     {
       (yyval.m_nInt) = -1;
 		}
-#line 1983 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1985 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 58:
@@ -1987,7 +1989,7 @@ yyreduce:
     {
 		  (yyval.m_nInt) = StreamState::NON_PRINT;
 		}
-#line 1991 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 1993 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 59:
@@ -1995,7 +1997,7 @@ yyreduce:
     {
 		  (yyval.m_nInt) = -1;
 		}
-#line 1999 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 2001 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
   case 60:
@@ -2003,11 +2005,11 @@ yyreduce:
     {
       (yyval.m_nInt) = -1;
 		}
-#line 2007 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 2009 "ftp_parser.cpp" /* yacc.c:1646  */
     break;
 
 
-#line 2011 "ftp_parser.cpp" /* yacc.c:1646  */
+#line 2013 "ftp_parser.cpp" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

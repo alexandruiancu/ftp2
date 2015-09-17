@@ -48,7 +48,7 @@ Server::Server()
   for ( int i = 0; i < 10; i++ )
     {
       pthread_join(m_q_workerThreads.front(), &pRet);
-      m_q_workerThreads.pop();
+      popWorker();
     }
   freeaddrinfo(pReturnList);
 }
